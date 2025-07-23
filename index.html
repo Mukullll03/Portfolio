@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Video Editor Portfolio</title>
+
+  <!-- Inter Font Import -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Base reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    /* Navigation */
+
+
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 50px; /* increased top spacing */
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid #dcdcdc;
+  border-radius: 16px;
+  padding: 10px 14px; /* more padding inside box */
+  gap: 45px; /* more gap between icon and nav */
+  height: 60px; /* navbar height */
+  max-width: 950px;      /* <<< THIS CONTROLS NAV WIDTH */
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.nav-icon {
+
+  width: 40px;
+  height: 40px;
+}
+
+.nav-items {
+  list-style: none;
+  display: flex;
+  gap: 70px; /* more spacing between items */
+}
+
+.nav-items li a {
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: normal;
+  font-family: "Microsoft Sans Serif", sans-serif;
+  color: #1a1a1a;
+  transition: color 0.2s ease;
+}
+
+.nav-items li a:hover {
+  color: #ff9500;
+}
+
+
+
+@media (max-width: 1024px) {
+  .nav-container {
+    padding: 8px 12px;
+    gap: 30px;
+  }
+
+  .nav-items {
+    gap: 40px;
+  }
+
+  .nav-items li a {
+    font-size: 18px;
+  }
+
+  .nav-icon {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* Always horizontal and centered */
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #dcdcdc;
+  border-radius: 16px;
+  padding: 10px 20px;
+  gap: 40px;
+  height: auto;
+  max-width: 950px;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  flex-wrap: nowrap; /* force horizontal */
+  overflow-x: auto;  /* allows scrolling if too tight */
+}
+
+.nav-items {
+  display: flex;
+  gap: 60px;
+  list-style: none;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-items li a {
+  text-decoration: none;
+  font-size: 20px;
+  color: #1a1a1a;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  overflow-x: hidden;
+}
+
+
+
+
+
+
+
+
+/* Responsive font size and spacing */
+@media (max-width: 1024px) {
+  .nav-items {
+    gap: 40px;
+  }
+
+  .nav-items li a {
+    font-size: 17px;
+  }
+
+  .nav-icon {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-items {
+    gap: 30px;
+  }
+
+  .nav-items li a {
+    font-size: 15px;
+  }
+
+  .nav-icon {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-items {
+    gap: 20px;
+  }
+
+  .nav-items li a {
+    font-size: 13px;
+  }
+
+  .nav-icon {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hide-on-small {
+    display: none !important;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Hide Home and Footer below iPad width */
+@media (max-width: 767px) {
+  .hide-on-small {
+    display: none !important;
+  }
+
+  .nav-container {
+    padding: 6px 10px;
+    gap: 20px;
+  }
+
+  .nav-items {
+    gap: 30px;
+  }
+
+  .nav-items li a {
+    font-size: 16px;
+  }
+
+  .nav-icon {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-container {
+    gap: 14px;
+  }
+
+  .nav-items {
+    gap: 20px;
+  }
+
+  .nav-items li a {
+    font-size: 14px;
+  }
+
+  .nav-icon {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-container {
+    gap: 10px;
+    padding: 4px 8px;
+  }
+
+  .nav-items {
+    gap: 14px;
+  }
+
+  .nav-items li a {
+    font-size: 12.5px;
+  }
+
+  .nav-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 767px) {
+
+
+  .nav-container {
+    height: 50px; /* reduce height */
+    max-width: 90%; /* shrink width */
+    padding: 4px 10px; /* reduce inner padding */
+    gap: 14px; /* less spacing between icon and nav items */
+  }
+
+  .nav-items {
+    gap: 16px; /* tighter spacing between nav links */
+  }
+
+  .nav-items li a {
+    font-size: 12.5px; /* slightly smaller text */
+  }
+
+  .nav-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /* Main content */
+
+.main-content {
+  margin-top: 50px; /* Adjust this value as needed */
+}
+
+
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+
+.main-heading {
+  font-size: clamp(34px, 6vw, 60px); /* increased max from 44px → 64px */
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+  overflow-x: auto;
+  max-width: 100%;
+  margin-bottom: 8px;
+}
+    .main-heading::-webkit-scrollbar {
+      display: none;
+    }
+
+
+.brand-line {
+  display: block;
+  font-size: clamp(32px, 5.5vw, 60px);
+  font-weight: 700;
+  overflow-x: auto;
+  margin-top: 20px; /* adds space below first line */
+}
+
+    .brand-line::-webkit-scrollbar {
+      display: none;
+    }
+
+.subheading-container {
+  position: relative;
+  margin: 0px 0 30px;
+  height: 59px;
+  width: 540px;
+  border: 1px solid #ff9300;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+}
+
+.subheading {
+  font-size: 35px;
+  font-weight: 600; /* Inter SemiBold */
+  letter-spacing: -2.5px;
+  white-space: nowrap;
+}
+
+
+.corner-dot {
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  border: 1.5px solid #ff9300;
+  background-color: transparent;
+  border-radius: 50%;
+}
+
+.top-left { top: -8px; left: -8px; }
+.top-right { top: -8px; right: -8px; }
+.bottom-left { bottom: -8px; left: -8px; }
+.bottom-right { bottom: -8px; right: -8px; }
+
+
+
+
+
+
+    /* Badge */
+.client-badge {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #1d1d1d;
+  border-radius: 50px;
+  padding: 6px 10px;
+  gap: 12px;
+  max-width: 100%;
+  margin-bottom: 30px;
+  margin-top: -3px;
+}
+
+.client-images {
+  display: flex;
+  position: relative;
+}
+
+.client-avatar {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-left: -10px;
+}
+
+.client-avatar:first-child {
+  margin-left: 0;
+}
+
+.client-text {
+  font-size: 16px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+
+
+
+    /* CTA Button */
+.cta-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 15px 23px;
+  background-color: #ff9500;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  transition: transform 0.25s ease, background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.cta-button:hover {
+  background-color: #e68600;
+}
+
+
+@media (min-width: 1025px) {
+  .cta-button:hover {
+    transform: scale(1.06);
+  }
+}
+
+
+.lightning-icon {
+  color: white;         /* ensures icon stays white */
+  font-size: 16px;
+  font-weight: bold;
+  font-color: #fffff;
+  margin-right: 0;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+
+
+   
+
+
+
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  pointer-events: none;
+}
+
+
+
+
+  </style>
+
+
+
+
+
+  <style>
+
+.custom-video {
+  max-width: 700px;  /* change this to control width */
+  width: 100%;
+  aspect-ratio: 16 / 9; /* change ratio if needed */
+  margin: 100px auto;   /* spacing */
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 14px 30px rgba(0,0,0,0.1);
+}
+
+.custom-video iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+
+
+@media (min-width: 1025px) {
+  .custom-video {
+    transition: transform 0.2s ease-out;
+    will-change: transform;
+  }
+}
+
+
+
+  </style>
+
+
+
+</head>
+<body>
+
+<canvas id="particle-canvas"></canvas>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="nav-container">
+    <img class="nav-icon" src="https://ik.imagekit.io/9fkmkomrf/New%20Website/layer1.webp?updatedAt=1753263522122" alt="Left Icon">
+    
+<ul class="nav-items">
+  <li class="hide-on-small"><a href="#">Home</a></li>
+  <li><a href="#">About</a></li>
+  <li><a href="#">Portfolio</a></li>
+  <li><a href="#">Stack</a></li>
+  <li><a href="#">Contact</a></li>
+  <li class="hide-on-small"><a href="#">Footer</a></li>
+</ul>
+
+    
+    <img class="nav-icon" src="https://ik.imagekit.io/9fkmkomrf/New%20Website/layer1.webp?updatedAt=1753263522122" alt="Right Icon">
+  </div>
+</nav>
+
+
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <h1 class="main-heading">
+      Get Edits That Pop<br />
+      <span class="brand-line">Like 1% Brands</span>
+    </h1>
+
+    <div class="subheading-container">
+      <span class="corner-dot top-left"></span>
+      <span class="corner-dot top-right"></span>
+      <span class="corner-dot bottom-left"></span>
+      <span class="corner-dot bottom-right"></span>
+      <h2 class="subheading">hey there I'm Mukul a Video Editor</h2>
+    </div>
+
+<div class="client-badge">
+  <div class="client-images">
+    <img src="https://ik.imagekit.io/9fkmkomrf/New%20Website/client1.png?updatedAt=1753248330676" alt="Client 1" class="client-avatar" />
+    <img src="https://ik.imagekit.io/9fkmkomrf/New%20Website/client3.webp?updatedAt=1753248330488" alt="Client 3" class="client-avatar" />
+    <img src="https://ik.imagekit.io/9fkmkomrf/New%20Website/client2.webp?updatedAt=1753248329909" alt="Client 2" class="client-avatar" />
+  </div>
+  <span class="client-text">
+  Worked With <span id="client-count">0</span>+ Clients
+</span>
+
+</div>
+
+
+    <button class="cta-button">
+<span class="lightning-icon">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+    <path d="M13 2L3 14H12L11 22L21 10H13L13 2Z" fill="white"/>
+  </svg>
+</span>
+
+      See Porfolio
+    </button>
+  </div>
+
+
+
+
+
+
+
+<div class="custom-video">
+  <iframe
+    src="https://iframe.mediadelivery.net/embed/265114/6d758f8e-fb5e-4d0f-a749-41c9940b24ec"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+    loading="lazy"
+  ></iframe>
+</div>
+
+
+
+
+
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const ctaButton = document.querySelector('.cta-button');
+      ctaButton.addEventListener('click', function () {
+        alert('Thank you for your interest! We will get in touch soon.');
+      });
+    });
+  </script>
+
+
+
+
+<script>
+  function animateCount(id, end, duration) {
+    const element = document.getElementById(id);
+    let start = 0;
+    const stepTime = Math.abs(Math.floor(duration / end));
+    const timer = setInterval(() => {
+      start++;
+      element.textContent = start;
+      if (start >= end) {
+        clearInterval(timer);
+      }
+    }, stepTime);
+  }
+
+  window.addEventListener('load', function () {
+    animateCount('client-count', 100, 1200); // animate to 100 in 1.2 sec
+  });
+</script>
+
+<script>
+  const canvas = document.getElementById('particle-canvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  function createParticles() {
+    particles = [];
+    for (let i = 0; i < 100; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 0.4 + 0.4,
+        dx: (Math.random() - 0.5) * 0.3,
+        dy: (Math.random() - 0.0) * 0.3
+      });
+    }
+  }
+
+  function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    particles.forEach(p => {
+      p.x += p.dx;
+      p.y += p.dy;
+
+      if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = '#000000';
+      ctx.fill();
+    });
+
+    requestAnimationFrame(animateParticles);
+  }
+
+  createParticles();
+  animateParticles();
+</script>
+
+
+
+
+<script>
+if (window.innerWidth >= 1025) {
+  const video = document.querySelector('.custom-video');
+
+  window.addEventListener('scroll', () => {
+    const rect = video.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    if (rect.top < windowHeight && rect.bottom > 0) {
+      const scrollPercent = 1 - rect.top / windowHeight;
+      const scale = 1 + Math.min(scrollPercent * 0.4, 0.4);
+      video.style.transform = `scale(${scale})`;
+    } else {
+      video.style.transform = 'scale(1)';
+    }
+  });
+}
+
+</script>
+
+
+
+
+
+</body>
+</html>
