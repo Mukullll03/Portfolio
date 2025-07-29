@@ -458,30 +458,228 @@ body {
   pointer-events: none;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+/* Custom Video Player Styles */
 .custom-video {
   max-width: 660px;
   width: 100%;
+  aspect-ratio: 16 / 9;
   margin: 150px auto;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 14px 30px rgba(0,0,0,0.1);
   position: relative;
 }
 
-.vimeo-container {
+.video-container {
   position: relative;
-  padding: 56.25% 0 0 0;
   width: 100%;
-  height: 0;
+  height: 100%;
+  background: #000;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
-.vimeo-container iframe {
+.video-player {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.video-thumbnail {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  z-index: 2;
+  border-radius: 20px;
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 45px;
+  height: 45px;
+  background: #ff9a11;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 3;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px;
+}
+
+.play-button:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.play-button svg {
+  width: 32px;
+  height: 32px;
+  margin-left: 0px;
+  fill: #ffffff;
+}
+
+.video-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  padding: 40px 20px 20px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  z-index: 4;
+}
+
+.video-container:hover .video-controls,
+.video-controls.show {
+  transform: translateY(0);
+}
+
+.controls-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.control-button {
+  background: none;
   border: none;
+  color: white;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.control-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.control-button svg {
+  width: 15px;
+  height: 15px;
+  fill: white;
+}
+
+.progress-container {
+  flex: 1;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+  margin: 0 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: #ff9500;
+  border-radius: 3px;
+  width: 0%;
+  transition: width 0.1s ease;
+  position: relative;
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background: #ff9500;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.progress-container:hover .progress-bar::after {
+  opacity: 1;
+}
+
+.time-display {
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  min-width: 80px;
+  text-align: center;
+}
+
+.volume-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.volume-slider {
+  width: 60px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+}
+
+.volume-progress {
+  height: 100%;
+  background: white;
+  border-radius: 2px;
+  width: 100%;
+  position: relative;
+}
+
+.fullscreen-button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.fullscreen-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.fullscreen-button svg {
+  width: 18px;
+  height: 18px;
+  fill: white;
 }
 
 @media (min-width: 1025px) {
@@ -492,87 +690,38 @@ body {
 }
 
 @media (max-width: 767px) {
-  .subheading {
-    font-size: 18px !important;
-    line-height: 1.4;
-    text-align: center;
-    letter-spacing: -0.5px;
-    font-weight: 600;
-    white-space: normal;
-  }
-}
-
-@media (max-width: 400px) {
-  .subheading {
-    font-size: 15px !important;
-  }
-}
-
-@media (max-width: 767px) {
-  .subheading-container {
-    width: 95%;
-    height: auto;
-    padding: 7px 9px;
-    border-radius: 5px;
-  }
-}
-
-@media (max-width: 767px) {
-  .client-badge {
-    padding: 4px 8px;
-    gap: 6px;
-    margin: -10px auto;
-  }
-
-  .client-text {
-    font-size: 14px;
-  }
-
-  .cta-button {
-    font-size: 14px;
-    padding: 10px 16px;
-    margin: 30px auto;
-  }
-}
-
-@media (max-width: 767px) {
   .custom-video {
     max-width: 95%;
     margin: 25px auto;
     border-radius: 14px;
   }
-}
-
-@media (max-width: 767px) {
-  .main-heading {
-    font-size: 36px;
-    font-weight: 1000;
-    text-align: center;
+  
+  .play-button {
+    width: 60px;
+    height: 60px;
   }
-
-  .brand-line {
-    font-size: 34px;
-    font-weight: 900;
-    letter-spacing: -0.3px;
-    text-align: center;
-    margin-top: 10px;
+  
+  .play-button svg {
+    width: 24px;
+    height: 24px;
   }
-}
-
-@media (min-width: 768px) and (max-width: 1024px) {
-  .custom-video {
-    max-width: 60%;
-    margin: 60px auto;
-    border-radius: 18px;
+  
+  .video-controls {
+    padding: 30px 15px 15px;
   }
-}
-
-@media (max-width: 767px) {
-  .custom-video {
-    max-width: 95%;
-    height: auto;
-    margin: 12px auto;
-    border-radius: 14px;
+  
+  .controls-row {
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .time-display {
+    font-size: 12px;
+    min-width: 70px;
+  }
+  
+  .volume-slider {
+    width: 40px;
   }
 }
 
@@ -1273,15 +1422,70 @@ See Porfolio
 </button>
 </div>
 
+<!-- Custom Video Player -->
 <div class="custom-video">
-  <div class="vimeo-container">
+  <div class="video-container">
+    <img 
+      src="https://ik.imagekit.io/9fkmkomrf/New%20Website/gg.jpg?updatedAt=1753798773669" 
+      alt="Video Thumbnail" 
+      class="video-thumbnail" 
+      id="videoThumbnail"
+    >
+    
+    <div class="play-button" id="playButton">
+      <svg viewBox="0 0 24 24">
+        <path d="M8 5v14l11-7z"/>
+      </svg>
+    </div>
+    
     <iframe 
-      src="https://player.vimeo.com/video/1105407254?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" 
-      allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-      referrerpolicy="strict-origin-when-cross-origin" 
-      title="Sequence 01"
-      loading="lazy">
-    </iframe>
+      id="vimeoPlayer"
+      src="https://player.vimeo.com/video/1105407254?background=1&autoplay=0&loop=0&byline=0&title=0&portrait=0&controls=0"
+      frameborder="0" 
+      allow="autoplay; fullscreen; picture-in-picture" 
+      allowfullscreen
+      style="display: none; width: 100%; height: 100%; border-radius: 20px;"
+    ></iframe>
+    
+    <div class="video-controls" id="videoControls">
+      <div class="controls-row">
+        <button class="control-button" id="playPauseBtn">
+          <svg id="playIcon" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+          <svg id="pauseIcon" viewBox="0 0 24 24" style="display: none;">
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+          </svg>
+        </button>
+        
+        <div class="progress-container" id="progressContainer">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+        
+        <div class="time-display" id="timeDisplay">0:00 / 0:00</div>
+        
+        <div class="volume-container">
+          <button class="control-button" id="muteBtn">
+            <svg id="volumeIcon" viewBox="0 0 24 24">
+              <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+            </svg>
+            <svg id="muteIcon" viewBox="0 0 24 24" style="display: none;">
+              <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+            </svg>
+          </button>
+          
+          <div class="volume-slider" id="volumeSlider">
+            <div class="volume-progress" id="volumeProgress"></div>
+          </div>
+        </div>
+        
+        <button class="fullscreen-button" id="fullscreenBtn">
+          <svg viewBox="0 0 24 24">
+            <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -1409,7 +1613,6 @@ See Porfolio
 </section>
 
 <!-- JavaScript for all functionality -->
-<script src="https://player.vimeo.com/api/player.js"></script>
 <script>
 // Client count animation
 function animateCount(id, end, duration) {
@@ -1435,6 +1638,211 @@ document.addEventListener('DOMContentLoaded', function () {
   ctaButton.addEventListener('click', function () {
     alert('Thank you for your interest! We will get in touch soon.');
   });
+});
+
+// Custom Video Player Functionality with Vimeo API
+document.addEventListener('DOMContentLoaded', function() {
+  // Load Vimeo Player API
+  const script = document.createElement('script');
+  script.src = 'https://player.vimeo.com/api/player.js';
+  document.head.appendChild(script);
+
+  script.onload = function() {
+    const iframe = document.getElementById('vimeoPlayer');
+    const thumbnail = document.getElementById('videoThumbnail');
+    const playButton = document.getElementById('playButton');
+    const videoControls = document.getElementById('videoControls');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const playIcon = document.getElementById('playIcon');
+    const pauseIcon = document.getElementById('pauseIcon');
+    const progressContainer = document.getElementById('progressContainer');
+    const progressBar = document.getElementById('progressBar');
+    const timeDisplay = document.getElementById('timeDisplay');
+    const muteBtn = document.getElementById('muteBtn');
+    const volumeIcon = document.getElementById('volumeIcon');
+    const muteIcon = document.getElementById('muteIcon');
+    const volumeSlider = document.getElementById('volumeSlider');
+    const volumeProgress = document.getElementById('volumeProgress');
+    const fullscreenBtn = document.getElementById('fullscreenBtn');
+    const videoContainer = document.querySelector('.video-container');
+
+    // Initialize Vimeo Player
+    const player = new Vimeo.Player(iframe);
+    let isPlaying = false;
+    let duration = 0;
+    let currentTime = 0;
+    let volume = 1;
+    let controlsTimeout;
+
+    // Get video duration
+    player.getDuration().then(function(dur) {
+      duration = dur;
+      updateTimeDisplay();
+    });
+
+    // Get initial volume
+    player.getVolume().then(function(vol) {
+      volume = vol;
+      volumeProgress.style.width = (volume * 100) + '%';
+    });
+
+    // Play button click
+    playButton.addEventListener('click', function() {
+      playVideo();
+    });
+
+    // Thumbnail click
+    thumbnail.addEventListener('click', function() {
+      playVideo();
+    });
+
+    // Play/Pause button
+    playPauseBtn.addEventListener('click', function() {
+      if (isPlaying) {
+        pauseVideo();
+      } else {
+        playVideo();
+      }
+    });
+
+    function playVideo() {
+      player.play();
+      isPlaying = true;
+      thumbnail.style.display = 'none';
+      playButton.style.display = 'none';
+      iframe.style.display = 'block';
+      playIcon.style.display = 'none';
+      pauseIcon.style.display = 'block';
+      showControls();
+    }
+
+    function pauseVideo() {
+      player.pause();
+      isPlaying = false;
+      playIcon.style.display = 'block';
+      pauseIcon.style.display = 'none';
+      showControls();
+    }
+
+    // Player events
+    player.on('play', function() {
+      isPlaying = true;
+      playIcon.style.display = 'none';
+      pauseIcon.style.display = 'block';
+    });
+
+    player.on('pause', function() {
+      isPlaying = false;
+      playIcon.style.display = 'block';
+      pauseIcon.style.display = 'none';
+    });
+
+    player.on('timeupdate', function(data) {
+      currentTime = data.seconds;
+      const progress = (currentTime / duration) * 100;
+      progressBar.style.width = progress + '%';
+      updateTimeDisplay();
+    });
+
+    // Progress bar click
+    progressContainer.addEventListener('click', function(e) {
+      const rect = progressContainer.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const width = rect.width;
+      const clickTime = (clickX / width) * duration;
+      player.setCurrentTime(clickTime);
+    });
+
+    // Mute button
+    muteBtn.addEventListener('click', function() {
+      player.getVolume().then(function(vol) {
+        if (vol > 0) {
+          player.setVolume(0);
+          volumeIcon.style.display = 'none';
+          muteIcon.style.display = 'block';
+          volumeProgress.style.width = '0%';
+        } else {
+          player.setVolume(volume);
+          volumeIcon.style.display = 'block';
+          muteIcon.style.display = 'none';
+          volumeProgress.style.width = (volume * 100) + '%';
+        }
+      });
+    });
+
+    // Volume slider
+    volumeSlider.addEventListener('click', function(e) {
+      const rect = volumeSlider.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const width = rect.width;
+      const newVolume = Math.max(0, Math.min(1, clickX / width));
+      volume = newVolume;
+      player.setVolume(newVolume);
+      volumeProgress.style.width = (newVolume * 100) + '%';
+      
+      if (newVolume > 0) {
+        volumeIcon.style.display = 'block';
+        muteIcon.style.display = 'none';
+      } else {
+        volumeIcon.style.display = 'none';
+        muteIcon.style.display = 'block';
+      }
+    });
+
+    // Fullscreen button
+    fullscreenBtn.addEventListener('click', function() {
+      player.requestFullscreen();
+    });
+
+    // Controls visibility
+    function showControls() {
+      videoControls.classList.add('show');
+      clearTimeout(controlsTimeout);
+      controlsTimeout = setTimeout(() => {
+        if (isPlaying) {
+          videoControls.classList.remove('show');
+        }
+      }, 3000);
+    }
+
+    videoContainer.addEventListener('mousemove', showControls);
+    videoContainer.addEventListener('click', function(e) {
+      if (e.target === iframe || e.target === videoContainer) {
+        if (isPlaying) {
+          pauseVideo();
+        } else {
+          playVideo();
+        }
+      }
+    });
+
+    // Update time display
+    function updateTimeDisplay() {
+      const current = formatTime(currentTime);
+      const total = formatTime(duration);
+      timeDisplay.textContent = `${current} / ${total}`;
+    }
+
+    // Format time helper
+    function formatTime(seconds) {
+      if (isNaN(seconds)) return '0:00';
+      const minutes = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return `${minutes}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    // Keyboard controls
+    document.addEventListener('keydown', function(e) {
+      if (e.code === 'Space' && e.target === document.body) {
+        e.preventDefault();
+        if (isPlaying) {
+          pauseVideo();
+        } else {
+          playVideo();
+        }
+      }
+    });
+  };
 });
 
 // Particle canvas animation
@@ -1551,6 +1959,7 @@ document.addEventListener('DOMContentLoaded', function() {
     stackObserver.observe(item);
   });
 });
+
 </script>
 
 </body>
