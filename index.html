@@ -1479,12 +1479,25 @@ body {
 
 
 
+<style>
 
 
+/* --- Ensure videos render properly on all devices --- */
+.video-showcase iframe {
+  min-width: 120px;     /* Prevent collapse on small screens */
+  min-height: 120px;    /* Prevent collapse on small screens */
+  display: block;
+}
+
+@media (max-width: 480px) {
+  .video-showcase .video-item iframe,
+  .video-showcase .shorts-item iframe {
+    loading: eager;     /* Override lazy load on small devices */
+  }
+}
 
 
-
-
+</style>
 
 
 
@@ -1684,6 +1697,9 @@ loading="lazy"
 </div>
 </section>
 
+
+
+
 <!-- SEAMLESS VIDEO SECTION -->
 <section class="video-showcase" id="videos">
   <h2 class="section-title">~ Videos I've Edited</h2>
@@ -1694,29 +1710,29 @@ loading="lazy"
       <div class="video-row">
         <!-- Original set -->
         <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/E4RzvivAAG8" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/E4RzvivAAG8" allowfullscreen loading="lazy"></iframe>
         </div>
         <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/o_izsSNkgW0" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/o_izsSNkgW0" allowfullscreen loading="lazy"></iframe>
         </div>
         <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/Piw7rmUeI1I" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/Piw7rmUeI1I" allowfullscreen loading="lazy"></iframe>
         </div>
         <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen loading="lazy"></iframe>
         </div>
         <!-- Duplicate set for seamless loop -->
         <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/E4RzvivAAG8" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/E4RzvivAAG8" allowfullscreen loading="lazy"></iframe>
         </div>
         <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/o_izsSNkgW0" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/o_izsSNkgW0" allowfullscreen loading="lazy"></iframe>
         </div>
         <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/Piw7rmUeI1I" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/Piw7rmUeI1I" allowfullscreen loading="lazy"></iframe>
         </div>
         <div class="video-item">
-          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen loading="lazy"></iframe>
         </div>
       </div>
 
