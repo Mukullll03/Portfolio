@@ -1197,29 +1197,41 @@ body {
   font-family: 'Instrument Serif', serif;
 }
 
-/* VIDEO SECTIONS VISIBILITY RULES */
+/* ===== VIDEO SECTIONS VISIBILITY RULES - CRITICAL SECTION ===== */
 
-/* DESKTOP ANIMATED VIDEO SECTION - Visible only on desktop (>1024px) */
+/* DESKTOP ANIMATED VIDEO SECTION */
 .video-desktop {
-  display: block;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
-@media (max-width: 1024px) {
+/* Hide desktop video on tablets and mobile (1024px and below) */
+@media screen and (max-width: 1024px) {
   .video-desktop {
     display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
   }
 }
 
-/* MOBILE/TABLET SIMPLE VIDEO SECTION - Hidden on desktop, visible on tablets & mobile (≤1024px) */
+/* MOBILE/TABLET SIMPLE VIDEO SECTION */
 .video-mobile {
-  display: none;
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
 }
 
-@media (max-width: 1024px) {
+/* Show mobile video on tablets and mobile (1024px and below) */
+@media screen and (max-width: 1024px) {
   .video-mobile {
-    display: block;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 }
+
+/* ===== END VIDEO SECTIONS VISIBILITY RULES ===== */
 
 /* DESKTOP ANIMATED VIDEO SECTION STYLES */
 .video-showcase {
@@ -1380,31 +1392,31 @@ body {
   gap: 15px;
 }
 
-/* Common video styles */
-.video-item {
+/* Common video styles for mobile section */
+.video-mobile .video-item {
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 }
 
-.video-item:hover {
+.video-mobile .video-item:hover {
   transform: scale(1.02);
 }
 
-.video-item iframe {
+.video-mobile .video-item iframe {
   width: 100%;
   border: none;
   display: block;
 }
 
 /* Normal video aspect ratio */
-.video-item:not(.shorts) iframe {
+.video-mobile .video-item:not(.shorts) iframe {
   aspect-ratio: 16/9;
 }
 
 /* Shorts aspect ratio */
-.video-item.shorts iframe {
+.video-mobile .video-item.shorts iframe {
   aspect-ratio: 9/16;
 }
 
