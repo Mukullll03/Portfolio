@@ -456,6 +456,7 @@ body {
   height: 100%;
   background: transparent;
   pointer-events: none;
+
 }
 
 
@@ -473,6 +474,8 @@ body {
   overflow: hidden;
   position: relative;
   background: #ffffff;
+  box-shadow: 0 14px 30px rgba(0,0,0,0.05);
+
 }
 
 .video-player {
@@ -1464,6 +1467,14 @@ body {
   font-family: 'Instrument Serif', serif;
 }
 
+
+
+
+
+
+
+
+
 /* DESKTOP ANIMATED VIDEO SECTION STYLES */
 .video-desktop {
   display: block;
@@ -1524,7 +1535,7 @@ body {
 .video-showcase .video-item {
   flex: 0 0 400px;
   aspect-ratio: 16/9;
-  border-radius: 25px;
+  border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
@@ -1603,6 +1614,42 @@ body {
     display: none !important;
   }
 }
+
+
+
+@media (max-width: 1024px) {
+  .video-mobile .video-item:hover {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+
+
+/* Disable all video transforms for mobile/tablets to avoid transformation stacking */
+@media (max-width: 1024px) {
+  .video-mobile .video-item,
+  .video-mobile .video-item iframe,
+  .video-grid.normal-videos .video-item,
+  .video-grid.shorts-videos .video-item {
+    transform: none !important;
+    will-change: auto !important;
+  }
+}
+
+
+/* Disable video hover transform on all touch devices (like iPads, phones) */
+@media (hover: none) and (pointer: coarse) {
+  .video-item:hover {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+
+
+
+
 
 /* MOBILE/TABLET SIMPLE VIDEO SECTION STYLES */
 .video-mobile {
@@ -2033,31 +2080,33 @@ See Porfolio
       <div class="video-row">
         <!-- Original set -->
         <div class="video-item">
-          <iframe src="https://fast.wistia.net/embed/iframe/3mns3225c4?web_component=true&seo=false" allowfullscreen></iframe>
+          <iframe src="https://ik.imagekit.io/9fkmkomrf/New%20Website/Explainer%20Video.mp4?updatedAt=1753857311470" allowfullscreen></iframe>
         </div>
         <div class="video-item">
-          <iframe src="https://fast.wistia.net/embed/iframe/3mns3225c4?web_component=true&seo=false" allowfullscreen></iframe>
+          <iframe src="https://ik.imagekit.io/9fkmkomrf/New%20Website/Explainer%20Video.mp4?updatedAt=1753857311470" allowfullscreen></iframe>
         </div>
         <div class="video-item">
-          <iframe src="https://fast.wistia.net/embed/iframe/3mns3225c4?web_component=true&seo=false" allowfullscreen></iframe>
+          <iframe src="https://ik.imagekit.io/9fkmkomrf/New%20Website/Explainer%20Video.mp4?updatedAt=1753857311470" allowfullscreen></iframe>
         </div>
         <div class="video-item">
-          <iframe src="https://fast.wistia.net/embed/iframe/3mns3225c4?web_component=true&seo=false" allowfullscreen></iframe>
+          <iframe src="https://ik.imagekit.io/9fkmkomrf/New%20Website/Explainer%20Video.mp4?updatedAt=1753857311470" allowfullscreen></iframe>
         </div>
         <!-- Duplicate set for seamless loop -->
         <div class="video-item">
-          <iframe src="https://fast.wistia.net/embed/iframe/3mns3225c4?web_component=true&seo=false" allowfullscreen></iframe>
+          <iframe src="https://ik.imagekit.io/9fkmkomrf/New%20Website/Explainer%20Video.mp4?updatedAt=1753857311470" allowfullscreen></iframe>
         </div>
         <div class="video-item">
-          <iframe src="https://fast.wistia.net/embed/iframe/3mns3225c4?web_component=true&seo=false" allowfullscreen></iframe>
+          <iframe src="https://ik.imagekit.io/9fkmkomrf/New%20Website/Explainer%20Video.mp4?updatedAt=1753857311470" allowfullscreen></iframe>
         </div>
         <div class="video-item">
-          <iframe src="https://fast.wistia.net/embed/iframe/3mns3225c4?web_component=true&seo=false" allowfullscreen></iframe>
+          <iframe src="https://ik.imagekit.io/9fkmkomrf/New%20Website/Explainer%20Video.mp4?updatedAt=1753857311470" allowfullscreen></iframe>
         </div>
         <div class="video-item">
-          <iframe src="https://fast.wistia.net/embed/iframe/3mns3225c4?web_component=true&seo=false" allowfullscreen></iframe>
+          <iframe src="https://ik.imagekit.io/9fkmkomrf/New%20Website/Explainer%20Video.mp4?updatedAt=1753857311470" allowfullscreen></iframe>
         </div>
       </div>
+
+
 
       <!-- Second row (scrolls left to right) with Shorts - Duplicated content for seamless loop -->
       <div class="video-row shorts-row">
@@ -2069,10 +2118,10 @@ See Porfolio
           <iframe src="https://ik.imagekit.io/9fkmkomrf/New%20Website/Air%20India%20Ahmedabad%20Plane%20Crash_%20What%20We%20Know%20Till%20Now.mp4?updatedAt=1753687864143" allowfullscreen></iframe>
         </div>
         <div class="video-item shorts-item">
-          <iframe src="https://www.youtube.com/embed/xen5cJ0SsDU" allowfullscreen></iframe>
+          <iframe src="https://ik.imagekit.io/9fkmkomrf/New%20Website/Air%20India%20Ahmedabad%20Plane%20Crash_%20What%20We%20Know%20Till%20Now.mp4?updatedAt=1753687864143" allowfullscreen></iframe>
         </div>
         <div class="video-item shorts-item">
-          <iframe src="https://www.youtube.com/embed/9bZkp7q19f0" allowfullscreen></iframe>
+          <iframe src="https://ik.imagekit.io/9fkmkomrf/New%20Website/Air%20India%20Ahmedabad%20Plane%20Crash_%20What%20We%20Know%20Till%20Now.mp4?updatedAt=1753687864143" allowfullscreen></iframe>
         </div>
         <!-- Duplicate set for seamless loop -->
         <div class="video-item shorts-item">
@@ -2082,10 +2131,10 @@ See Porfolio
           <iframe src="https://ik.imagekit.io/9fkmkomrf/New%20Website/Air%20India%20Ahmedabad%20Plane%20Crash_%20What%20We%20Know%20Till%20Now.mp4?updatedAt=1753687864143" allowfullscreen></iframe>
         </div>
         <div class="video-item shorts-item">
-          <iframe src="https://www.youtube.com/embed/xen5cJ0SsDU" allowfullscreen></iframe>
+          <iframe src="https://ik.imagekit.io/9fkmkomrf/New%20Website/Air%20India%20Ahmedabad%20Plane%20Crash_%20What%20We%20Know%20Till%20Now.mp4?updatedAt=1753687864143" allowfullscreen></iframe>
         </div>
         <div class="video-item shorts-item">
-          <iframe src="https://www.youtube.com/embed/9bZkp7q19f0" allowfullscreen></iframe>
+          <iframe src="https://ik.imagekit.io/9fkmkomrf/New%20Website/Air%20India%20Ahmedabad%20Plane%20Crash_%20What%20We%20Know%20Till%20Now.mp4?updatedAt=1753687864143" allowfullscreen></iframe>
         </div>
       </div>
 
@@ -2094,6 +2143,15 @@ See Porfolio
 </section>
 </div>
 
+
+
+
+
+
+
+
+
+
 <!-- Mobile & Tablet Simple Videos (Visible only on tablets & mobile ≤ 1024px) -->
 <div class="video-mobile">
   <h2 class="section-title">~ Videos I've Edited</h2>
@@ -2101,13 +2159,13 @@ See Porfolio
   <!-- Normal Videos -->
   <div class="video-grid normal-videos">
     <div class="video-item">
-      <iframe src="https://fast.wistia.net/embed/iframe/3mns3225c4?web_component=true&seo=false" allowfullscreen></iframe>
+          <iframe src="https://ik.imagekit.io/9fkmkomrf/New%20Website/Explainer%20Video.mp4?updatedAt=1753857311470" allowfullscreen></iframe>
     </div>
     <div class="video-item">
-      <iframe src="https://fast.wistia.net/embed/iframe/3mns3225c4?web_component=true&seo=false" allowfullscreen></iframe>
+          <iframe src="https://ik.imagekit.io/9fkmkomrf/New%20Website/Explainer%20Video.mp4?updatedAt=1753857311470" allowfullscreen></iframe>
     </div>
     <div class="video-item">
-      <iframe src="https://www.youtube.com/embed/Piw7rmUeI1I" allowfullscreen></iframe>
+          <iframe src="https://ik.imagekit.io/9fkmkomrf/New%20Website/Explainer%20Video.mp4?updatedAt=1753857311470" allowfullscreen></iframe>
     </div>
   </div>
 
@@ -2120,10 +2178,10 @@ See Porfolio
       <iframe src="https://ik.imagekit.io/9fkmkomrf/New%20Website/Air%20India%20Ahmedabad%20Plane%20Crash_%20What%20We%20Know%20Till%20Now.mp4?updatedAt=1753687864143" allowfullscreen></iframe>
     </div>
     <div class="video-item shorts">
-      <iframe src="https://www.youtube.com/embed/xen5cJ0SsDU" allowfullscreen></iframe>
+      <iframe src="https://ik.imagekit.io/9fkmkomrf/New%20Website/Air%20India%20Ahmedabad%20Plane%20Crash_%20What%20We%20Know%20Till%20Now.mp4?updatedAt=1753687864143" allowfullscreen></iframe>
     </div>
     <div class="video-item shorts">
-      <iframe src="https://www.youtube.com/embed/9bZkp7q19f0" allowfullscreen></iframe>
+      <iframe src="https://ik.imagekit.io/9fkmkomrf/New%20Website/Air%20India%20Ahmedabad%20Plane%20Crash_%20What%20We%20Know%20Till%20Now.mp4?updatedAt=1753687864143" allowfullscreen></iframe>
     </div>
   </div>
 </div>
