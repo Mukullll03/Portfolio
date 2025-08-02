@@ -64,7 +64,7 @@
         .logo {
             display: flex;
             align-items: center;
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 500;
             color: #333333;
             text-decoration: none;
@@ -116,25 +116,25 @@
             white-space: nowrap;
         }
 
-        @media (min-width: 480px) {
+        @media (max-width: 480px) {
             .nav a {
-                font-size: 10px;
+                font-size: 9px;
                 letter-spacing: 0.8px;
             }
         }
 
 
             .logo {
-                font-size: 12px;
+                font-size: 10px;
             }
         }
 
         .logo-img {
-            width: 20px;
-            height: 20px;
+            width: 10px;
+            height: 10px;
 
         }
-
+ }
 
         @media (min-width: 768px) {
             .nav a {
@@ -216,6 +216,17 @@
                 letter-spacing: 8px;
             }
         }
+
+
+
+
+        @media (max-width: 479px) {
+            .section-title {
+                font-size: 11px;
+                letter-spacing: 4px;
+            }
+        }
+
 
         @media (min-width: 768px) {
             .section-title {
