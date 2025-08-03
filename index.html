@@ -853,7 +853,7 @@
     <div id="videoModal" class="video-modal">
         <div class="video-modal-content">
             <button class="video-close" onclick="closeVideoModal()" aria-label="Close video">&times;</button>
-            <iframe id="modalVideo" src="/placeholder.svg" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+            <iframe id="modalVideo" src="about:blank" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
         </div>
     </div>
 
@@ -889,7 +889,7 @@
             iceland: 'https://www.youtube.com/embed/Hm7vnOC4hoY?autoplay=1&modestbranding=1&showinfo=0&rel=0'
         };
 
-        // Open portfolio video in fullscreen modal
+        // Open portfolio video in fullscreen modal - FIXED VERSION
         function openPortfolioVideo(item) {
             if (navigator.vibrate) {
                 navigator.vibrate(50);
@@ -899,20 +899,26 @@
             const modalVideo = document.getElementById('modalVideo');
             
             if (portfolioVideos[item]) {
-                modalVideo.src = portfolioVideos[item];
+                // Show modal first with blank iframe
                 modal.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                document.body.style.overflow = 'hidden';
+                
+                // Set video source after a tiny delay to prevent flash
+                setTimeout(() => {
+                    modalVideo.src = portfolioVideos[item];
+                }, 50);
             }
         }
 
-        // Close video modal
+        // Close video modal - IMPROVED VERSION
         function closeVideoModal() {
             const modal = document.getElementById('videoModal');
             const modalVideo = document.getElementById('modalVideo');
             
+            // Clear video source immediately to stop playback
+            modalVideo.src = 'about:blank';
             modal.classList.remove('active');
-            modalVideo.src = ''; // Stop video playback
-            document.body.style.overflow = ''; // Restore scrolling
+            document.body.style.overflow = '';
         }
 
         // Close modal when clicking outside the video
