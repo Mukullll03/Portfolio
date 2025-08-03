@@ -265,7 +265,7 @@
             transform: translateY(0);
         }
 
-        /* Portfolio Section - Maintains 3 columns but responsive */
+        /* Portfolio Section - With image scale and blur effect */
         .portfolio-section {
             margin: 0px 0;
             text-align: center;
@@ -320,15 +320,10 @@
 
         .portfolio-item {
             aspect-ratio: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
             overflow: hidden;
             position: relative;
-            background-size: cover;
-            background-position: center;
+            background: #f0f0f0;
         }
 
         @media (min-width: 768px) {
@@ -337,119 +332,121 @@
             }
         }
 
-        .portfolio-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease, filter 0.3s ease;
         }
 
-        @media (min-width: 768px) {
-            .portfolio-item:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-            }
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+            filter: blur(0.5px);
         }
 
-        .portfolio-item .content {
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 100%;
-            height: 100%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            padding: 15px;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-description {
+            color: white;
+            text-align: center;
             font-weight: 600;
             font-size: 10px;
-            text-align: center;
-            padding: 8px;
-            line-height: 1.2;
-            hyphens: auto;
+            line-height: 1.3;
             word-break: break-word;
         }
 
         @media (min-width: 480px) {
-            .portfolio-item .content {
+            .portfolio-description {
                 font-size: 12px;
-                padding: 12px;
             }
         }
 
         @media (min-width: 768px) {
-            .portfolio-item .content {
+            .portfolio-description {
                 font-size: 14px;
-                padding: 15px;
             }
         }
 
         @media (min-width: 1024px) {
-            .portfolio-item .content {
-                font-size: 18px;
-                padding: 20px;
+            .portfolio-description {
+                font-size: 16px;
             }
         }
 
-        /* Individual portfolio item styles */
-        .portfolio-item.picasso {
-            background: linear-gradient(135deg, #e8e8e8, #f5f5f5);
-            color: #333;
+        /* Video Modal Styles */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
         }
 
-        .portfolio-item.nike {
-            background: #000000;
-            color: #00d4aa;
+        .video-modal.active {
+            display: flex;
         }
 
-        .portfolio-item.webmd {
-            background: #ffffff;
-            border: 1px solid #e8e8e8;
-            color: #0066cc;
+        .video-modal-content {
+            position: relative;
+            width: 90%;
+            height: 90%;
+            max-width: 1200px;
+            max-height: 675px;
         }
 
-        @media (min-width: 768px) {
-            .portfolio-item.webmd {
-                border: 2px solid #e8e8e8;
+        .video-modal iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 10001;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-close:hover {
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .video-close {
+                top: -50px;
+                right: -10px;
+                font-size: 25px;
             }
-        }
-
-        .portfolio-item.psychedelics {
-            background: linear-gradient(135deg, #4a90e2, #7b68ee);
-            color: #ffffff;
-        }
-
-        .portfolio-item.adidas {
-            background: #ffffff;
-            border: 1px solid #e8e8e8;
-            color: #000000;
-        }
-
-        @media (min-width: 768px) {
-            .portfolio-item.adidas {
-                border: 2px solid #e8e8e8;
-            }
-        }
-
-        .portfolio-item.creativity {
-            background: linear-gradient(135deg, #8b4513, #d2b48c);
-            color: #ffffff;
-        }
-
-        .portfolio-item.medscape {
-            background: #ffffff;
-            border: 1px solid #e8e8e8;
-            color: #0066cc;
-        }
-
-        @media (min-width: 768px) {
-            .portfolio-item.medscape {
-                border: 2px solid #e8e8e8;
-            }
-        }
-
-        .portfolio-item.dtx {
-            background: #4a90e2;
-            color: #ffffff;
-        }
-
-        .portfolio-item.iceland {
-            background: linear-gradient(135deg, #2c3e50, #34495e);
-            color: #ffffff;
         }
 
         .fade-line1 {
@@ -542,16 +539,6 @@
             background-position: center;
         }
 
-        .instagram-item:hover {
-            transform: scale(1.02);
-        }
-
-        @media (min-width: 768px) {
-            .instagram-item:hover {
-                transform: scale(1.05);
-            }
-        }
-
         .instagram-item::before {
             content: '';
             position: absolute;
@@ -562,10 +549,6 @@
             background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
             opacity: 0;
             transition: opacity 0.3s ease;
-        }
-
-        .instagram-item:hover::before {
-            opacity: 0.1;
         }
 
         /* Generate different colored backgrounds for Instagram items */
@@ -618,7 +601,6 @@
             width: 20px;
             height: 20px;
             object-fit: contain;
-            transition: transform 0.3s ease;
         }
 
         @media (max-width: 480px) {
@@ -640,10 +622,6 @@
                 width: 28px;
                 height: 28px;
             }
-        }
-
-        .social-icon:hover img {
-            transform: scale(1.2);
         }
 
         /* Loading Animation */
@@ -701,23 +679,6 @@
             }
         }
 
-        /* Touch device optimizations */
-        @media (hover: none) and (pointer: coarse) {
-            .portfolio-item:hover,
-            .instagram-item:hover,
-            .social-icon:hover {
-                transform: none;
-            }
-            
-            .portfolio-item:active {
-                transform: scale(0.98);
-            }
-            
-            .instagram-item:active {
-                transform: scale(0.98);
-            }
-        }
-
         /* Landscape orientation on mobile */
         @media (max-height: 500px) and (orientation: landscape) {
             .header {
@@ -769,36 +730,63 @@
 
         <div class="fade-line loading"></div>
 
-        <!-- Portfolio Section -->
+        <!-- Enhanced Portfolio Section with Scale and Blur Effects -->
         <section class="portfolio-section loading">
             <h2 class="section-title">PORTFOLIO EXAMPLES</h2>
             <div class="portfolio-grid">
-                <div class="portfolio-item picasso" onclick="openPortfolio('picasso')" role="button" tabindex="0" aria-label="View Picasso portfolio item">
-                    <div class="content">I Tried Picasso's Daily Routine</div>
+                <div class="portfolio-item" onclick="openPortfolioVideo('picasso')" role="button" tabindex="0" aria-label="View Picasso portfolio video">
+                    <img src="https://picsum.photos/400/400?random=1" alt="Picasso Portfolio Thumbnail">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-description">I Tried Picasso's Daily Routine - A creative exploration of the master's artistic process and daily habits that shaped his revolutionary art</div>
+                    </div>
                 </div>
-                <div class="portfolio-item nike" onclick="openPortfolio('nike')" role="button" tabindex="0" aria-label="View Nike portfolio item">
-                    <div class="content">NIKE</div>
+                <div class="portfolio-item" onclick="openPortfolioVideo('nike')" role="button" tabindex="0" aria-label="View Nike portfolio video">
+                    <img src="https://picsum.photos/400/400?random=2" alt="Nike Portfolio Thumbnail">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-description">NIKE - Dynamic brand commercial showcasing athletic excellence, motivation, and the power of sport to inspire greatness</div>
+                    </div>
                 </div>
-                <div class="portfolio-item webmd" onclick="openPortfolio('webmd')" role="button" tabindex="0" aria-label="View WebMD portfolio item">
-                    <div class="content">WebMD</div>
+                <div class="portfolio-item" onclick="openPortfolioVideo('webmd')" role="button" tabindex="0" aria-label="View WebMD portfolio video">
+                    <img src="https://picsum.photos/400/400?random=3" alt="WebMD Portfolio Thumbnail">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-description">WebMD - Educational health content designed to inform and engage audiences with trusted medical information and wellness guidance</div>
+                    </div>
                 </div>
-                <div class="portfolio-item psychedelics" onclick="openPortfolio('psychedelics')" role="button" tabindex="0" aria-label="View Psychedelics portfolio item">
-                    <div class="content">Psychedelics Changed My Life</div>
+                <div class="portfolio-item" onclick="openPortfolioVideo('psychedelics')" role="button" tabindex="0" aria-label="View Psychedelics portfolio video">
+                    <img src="https://picsum.photos/400/400?random=4" alt="Psychedelics Portfolio Thumbnail">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-description">Psychedelics Changed My Life - A personal journey exploring consciousness, transformation, and the profound impact of psychedelic experiences</div>
+                    </div>
                 </div>
-                <div class="portfolio-item adidas" onclick="openPortfolio('adidas')" role="button" tabindex="0" aria-label="View Adidas portfolio item">
-                    <div class="content">adidas</div>
+                <div class="portfolio-item" onclick="openPortfolioVideo('adidas')" role="button" tabindex="0" aria-label="View Adidas portfolio video">
+                    <img src="https://picsum.photos/400/400?random=5" alt="Adidas Portfolio Thumbnail">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-description">adidas - Inspiring athletic performance through innovative brand storytelling and celebrating the spirit of sport and achievement</div>
+                    </div>
                 </div>
-                <div class="portfolio-item creativity" onclick="openPortfolio('creativity')" role="button" tabindex="0" aria-label="View Creativity portfolio item">
-                    <div class="content">CREATIVITY</div>
+                <div class="portfolio-item" onclick="openPortfolioVideo('creativity')" role="button" tabindex="0" aria-label="View Creativity portfolio video">
+                    <img src="https://picsum.photos/400/400?random=6" alt="Creativity Portfolio Thumbnail">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-description">CREATIVITY - Exploring the boundless world of artistic expression, innovation, and the creative process that drives human imagination</div>
+                    </div>
                 </div>
-                <div class="portfolio-item medscape" onclick="openPortfolio('medscape')" role="button" tabindex="0" aria-label="View Medscape portfolio item">
-                    <div class="content">Medscape EDUCATION</div>
+                <div class="portfolio-item" onclick="openPortfolioVideo('medscape')" role="button" tabindex="0" aria-label="View Medscape portfolio video">
+                    <img src="https://picsum.photos/400/400?random=7" alt="Medscape Portfolio Thumbnail">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-description">Medscape EDUCATION - Professional medical content for healthcare practitioners, providing continuing education and clinical insights</div>
+                    </div>
                 </div>
-                <div class="portfolio-item dtx" onclick="openPortfolio('dtx')" role="button" tabindex="0" aria-label="View DTx portfolio item">
-                    <div class="content">DTx</div>
+                <div class="portfolio-item" onclick="openPortfolioVideo('dtx')" role="button" tabindex="0" aria-label="View DTx portfolio video">
+                    <img src="https://picsum.photos/400/400?random=8" alt="DTx Portfolio Thumbnail">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-description">DTx - Digital therapeutics revolutionizing healthcare through innovative technology solutions and personalized treatment approaches</div>
+                    </div>
                 </div>
-                <div class="portfolio-item iceland" onclick="openPortfolio('iceland')" role="button" tabindex="0" aria-label="View Iceland portfolio item">
-                    <div class="content">ICELAND</div>
+                <div class="portfolio-item" onclick="openPortfolioVideo('iceland')" role="button" tabindex="0" aria-label="View Iceland portfolio video">
+                    <img src="https://picsum.photos/400/400?random=9" alt="Iceland Portfolio Thumbnail">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-description">ICELAND - Breathtaking cinematic journey through stunning Nordic landscapes, capturing the raw beauty and mystique of this incredible country</div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -817,6 +805,14 @@
             </div>
         </section>
     </main>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="video-modal">
+        <div class="video-modal-content">
+            <button class="video-close" onclick="closeVideoModal()" aria-label="Close video">&times;</button>
+            <iframe id="modalVideo" src="/placeholder.svg" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -837,16 +833,58 @@
     </footer>
 
     <script>
-        // Portfolio item click handler
-        function openPortfolio(item) {
-            // Add haptic feedback for mobile devices
+        // Portfolio video data with working YouTube videos
+        const portfolioVideos = {
+            picasso: 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&modestbranding=1&showinfo=0&rel=0',
+            nike: 'https://www.youtube.com/embed/hJLMSllzoLA?autoplay=1&modestbranding=1&showinfo=0&rel=0',
+            webmd: 'https://www.youtube.com/embed/oHg5SJYRHA0?autoplay=1&modestbranding=1&showinfo=0&rel=0',
+            psychedelics: 'https://www.youtube.com/embed/kJQP7kiw5Fk?autoplay=1&modestbranding=1&showinfo=0&rel=0',
+            adidas: 'https://www.youtube.com/embed/L_jWHffIx5E?autoplay=1&modestbranding=1&showinfo=0&rel=0',
+            creativity: 'https://www.youtube.com/embed/9bZkp7q19f0?autoplay=1&modestbranding=1&showinfo=0&rel=0',
+            medscape: 'https://www.youtube.com/embed/PHgc8Q6qTjc?autoplay=1&modestbranding=1&showinfo=0&rel=0',
+            dtx: 'https://www.youtube.com/embed/fJ9rUzIMcZQ?autoplay=1&modestbranding=1&showinfo=0&rel=0',
+            iceland: 'https://www.youtube.com/embed/Hm7vnOC4hoY?autoplay=1&modestbranding=1&showinfo=0&rel=0'
+        };
+
+        // Open portfolio video in fullscreen modal
+        function openPortfolioVideo(item) {
             if (navigator.vibrate) {
                 navigator.vibrate(50);
             }
-            console.log(`Opening ${item} portfolio item`);
-            // Replace alert with actual functionality
-            // window.open(`/portfolio/${item}`, '_blank');
+            
+            const modal = document.getElementById('videoModal');
+            const modalVideo = document.getElementById('modalVideo');
+            
+            if (portfolioVideos[item]) {
+                modalVideo.src = portfolioVideos[item];
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
         }
+
+        // Close video modal
+        function closeVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const modalVideo = document.getElementById('modalVideo');
+            
+            modal.classList.remove('active');
+            modalVideo.src = ''; // Stop video playback
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+
+        // Close modal when clicking outside the video
+        document.getElementById('videoModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeVideoModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeVideoModal();
+            }
+        });
 
         // Instagram item click handler
         function openInstagram(index) {
