@@ -23,9 +23,6 @@
             min-width: 320px;
         }
 
-
-
-
         /* Header - Responsive but maintains layout */
         .header {
             display: flex;
@@ -39,27 +36,17 @@
             min-height: 84px;
         }
 
-
-
-
-
-
         @media (min-width: 768px) {
             .header {
                 padding: 55px 50px;
             }
         }
 
-
         @media (max-width: 480px) {
             .header {
-                padding: 0px 20px;
-
+                padding: 20px 20px;
             }
         }
-
-
-
 
         .logo {
             display: flex;
@@ -116,27 +103,20 @@
             white-space: nowrap;
         }
 
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 9px;
+            }
 
+            .logo-img {
+                width: 16px;
+                height: 16px;
+            }
 
-
-@media (max-width: 480px) {
-    .logo {
-        font-size: 9px; /* smaller text */
-    }
-
-    .logo-img {
-        width: 16px; /* smaller logo image */
-        height: 16px;
-    }
-
-    .nav a {
-        font-size: 9px; /* smaller nav link text */
-    }
-}
-
-
-
-
+            .nav a {
+                font-size: 9px;
+            }
+        }
 
         @media (min-width: 768px) {
             .nav a {
@@ -175,12 +155,6 @@
             }
         }
 
-
-
-
-
-
-
         /* Animation Showreel Section */
         .showreel-section {
             text-align: center;
@@ -193,15 +167,11 @@
             }
         }
 
-
-@media (max-width: 480px) {
-    .showreel-section {
-        margin-top: 0;
-    }
-}
-
-
-
+        @media (max-width: 480px) {
+            .showreel-section {
+                margin-top: 0;
+            }
+        }
 
         .section-title {
             font-size: 12px;
@@ -219,16 +189,12 @@
             }
         }
 
-
-
-
         @media (max-width: 479px) {
             .section-title {
                 font-size: 11px;
                 letter-spacing: 4px;
             }
         }
-
 
         @media (min-width: 768px) {
             .section-title {
@@ -279,7 +245,7 @@
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.6s ease;
-            margin: 0px 0;
+            margin: 30px 0;
         }
 
         @media (min-width: 768px) {
@@ -287,6 +253,7 @@
                 margin: 40px 0;
             }
         }
+
         @media (max-width: 480px) {
             .fade-line {
                 margin: 30px 0;
@@ -298,15 +265,10 @@
             transform: translateY(0);
         }
 
-
-
-
-
-
         /* Portfolio Section - Maintains 3 columns but responsive */
         .portfolio-section {
             margin: 0px 0;
-          text-align: center;
+            text-align: center;
         }
 
         @media (min-width: 768px) {
@@ -335,11 +297,10 @@
             }
         }
 
-
         @media (max-width: 479px) {
             .portfolio-grid {
                 gap: 3px;
-                margin-top: 05px;
+                margin-top: 15px;
             }
         }
 
@@ -491,13 +452,6 @@
             color: #ffffff;
         }
 
-
-
-
-
-
-
-
         .fade-line1 {
             width: 100%;
             height: 1px;
@@ -505,7 +459,7 @@
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.6s ease;
-            margin: 0px 0;
+            margin: 30px 0;
         }
 
         @media (min-width: 768px) {
@@ -513,6 +467,7 @@
                 margin: 50px 0;
             }
         }
+
         @media (max-width: 480px) {
             .fade-line1 {
                 margin: 30px 0;
@@ -524,20 +479,10 @@
             transform: translateY(0);
         }
 
-
-
-
-
-
-
-
-
-
-
         /* Instagram Section - Maintains 5 columns but responsive */
         .instagram-section {
             margin: 0px 0 0px 0;
-          text-align: center;
+            text-align: center;
         }
 
         @media (min-width: 768px) {
@@ -552,15 +497,11 @@
             }
         }
 
-
         @media (max-width: 480px) {
             .instagram-section {
                 margin: 0px 0 0px 0;
             }
         }
-
-
-
 
         .instagram-grid {
             display: grid;
@@ -601,11 +542,6 @@
             background-position: center;
         }
 
-        @media (min-width: 768px) {
-            .instagram-item {
-            }
-        }
-
         .instagram-item:hover {
             transform: scale(1.02);
         }
@@ -639,84 +575,76 @@
         .instagram-item:nth-child(4) { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
         .instagram-item:nth-child(5) { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
 
-        
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
 
+        @media (max-width: 480px) {
+            .footer {
+                padding: 20px 0;
+                margin-top: 30px;
+            }
+        }
 
+        @media (min-width: 768px) {
+            .footer {
+                padding: 40px 0;
+                margin-top: 50px;
+            }
+        }
 
-.footer {
-    text-align: center;
-    padding: 30px 0;
-    margin-top: 40px;
-}
+        @media (min-width: 1024px) {
+            .footer {
+                padding: 50px 0;
+                margin-top: 60px;
+            }
+        }
 
-@media (max-width: 480px) {
-    .footer {
-        padding: 20px 0;
-        margin-top: 30px;
-    }
-}
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
 
-@media (min-width: 768px) {
-    .footer {
-        padding: 40px 0;
-        margin-top: 50px;
-    }
-}
+        @media (min-width: 768px) {
+            .social-icons {
+                gap: 30px;
+            }
+        }
 
-@media (min-width: 1024px) {
-    .footer {
-        padding: 50px 0;
-        margin-top: 60px;
-    }
-}
+        .social-icon img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
 
-.social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
+        @media (max-width: 480px) {
+            .social-icon img {
+                width: 18px;
+                height: 18px;
+            }
+        }
 
-@media (min-width: 768px) {
-    .social-icons {
-        gap: 30px;
-    }
-}
+        @media (min-width: 768px) {
+            .social-icon img {
+                width: 24px;
+                height: 24px;
+            }
+        }
 
-.social-icon img {
-    width: 20px;
-    height: 20px;
-    object-fit: contain;
-    transition: transform 0.3s ease;
-}
+        @media (min-width: 1024px) {
+            .social-icon img {
+                width: 28px;
+                height: 28px;
+            }
+        }
 
-@media (max-width: 480px) {
-    .social-icon img {
-        width: 18px;
-        height: 18px;
-    }
-}
-
-@media (min-width: 768px) {
-    .social-icon img {
-        width: 24px;
-        height: 24px;
-    }
-}
-
-@media (min-width: 1024px) {
-    .social-icon img {
-        width: 28px;
-        height: 28px;
-    }
-}
-
-.social-icon:hover img {
-    transform: scale(1.2);
-}
-
-
-
-
+        .social-icon:hover img {
+            transform: scale(1.2);
+        }
 
         /* Loading Animation */
         .loading {
@@ -806,14 +734,13 @@
                 margin: 40px 0;
             }
         }
-
     </style>
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <a href="#" class="logo">
-            <img src="https://i.postimg.cc/tT6FMcpS/2.png" alt="Logo" class="logo-img">
+            <img src="https://i.postimg.cc/tT6FMcpS/2.png" alt="Skymography Logo" class="logo-img">
             bull.edits_
         </a>
 
@@ -846,75 +773,68 @@
         <section class="portfolio-section loading">
             <h2 class="section-title">PORTFOLIO EXAMPLES</h2>
             <div class="portfolio-grid">
-                <div class="portfolio-item picasso" onclick="openPortfolio('picasso')">
+                <div class="portfolio-item picasso" onclick="openPortfolio('picasso')" role="button" tabindex="0" aria-label="View Picasso portfolio item">
                     <div class="content">I Tried Picasso's Daily Routine</div>
                 </div>
-                <div class="portfolio-item nike" onclick="openPortfolio('nike')">
+                <div class="portfolio-item nike" onclick="openPortfolio('nike')" role="button" tabindex="0" aria-label="View Nike portfolio item">
                     <div class="content">NIKE</div>
                 </div>
-                <div class="portfolio-item webmd" onclick="openPortfolio('webmd')">
+                <div class="portfolio-item webmd" onclick="openPortfolio('webmd')" role="button" tabindex="0" aria-label="View WebMD portfolio item">
                     <div class="content">WebMD</div>
                 </div>
-                <div class="portfolio-item psychedelics" onclick="openPortfolio('psychedelics')">
+                <div class="portfolio-item psychedelics" onclick="openPortfolio('psychedelics')" role="button" tabindex="0" aria-label="View Psychedelics portfolio item">
                     <div class="content">Psychedelics Changed My Life</div>
                 </div>
-                <div class="portfolio-item adidas" onclick="openPortfolio('adidas')">
+                <div class="portfolio-item adidas" onclick="openPortfolio('adidas')" role="button" tabindex="0" aria-label="View Adidas portfolio item">
                     <div class="content">adidas</div>
                 </div>
-                <div class="portfolio-item creativity" onclick="openPortfolio('creativity')">
+                <div class="portfolio-item creativity" onclick="openPortfolio('creativity')" role="button" tabindex="0" aria-label="View Creativity portfolio item">
                     <div class="content">CREATIVITY</div>
                 </div>
-                <div class="portfolio-item medscape" onclick="openPortfolio('medscape')">
+                <div class="portfolio-item medscape" onclick="openPortfolio('medscape')" role="button" tabindex="0" aria-label="View Medscape portfolio item">
                     <div class="content">Medscape EDUCATION</div>
                 </div>
-                <div class="portfolio-item dtx" onclick="openPortfolio('dtx')">
+                <div class="portfolio-item dtx" onclick="openPortfolio('dtx')" role="button" tabindex="0" aria-label="View DTx portfolio item">
                     <div class="content">DTx</div>
                 </div>
-                <div class="portfolio-item iceland" onclick="openPortfolio('iceland')">
+                <div class="portfolio-item iceland" onclick="openPortfolio('iceland')" role="button" tabindex="0" aria-label="View Iceland portfolio item">
                     <div class="content">ICELAND</div>
                 </div>
             </div>
         </section>
 
-
-
         <div class="fade-line1 loading"></div>
-
-
 
         <!-- Instagram Section -->
         <section class="instagram-section loading">
             <h2 class="section-title">INSTAGRAM</h2>
             <div class="instagram-grid">
-                <div class="instagram-item" onclick="openInstagram(1)"></div>
-                <div class="instagram-item" onclick="openInstagram(2)"></div>
-                <div class="instagram-item" onclick="openInstagram(3)"></div>
-                <div class="instagram-item" onclick="openInstagram(4)"></div>
-                <div class="instagram-item" onclick="openInstagram(5)"></div>
+                <div class="instagram-item" onclick="openInstagram(1)" role="button" tabindex="0" aria-label="View Instagram post 1"></div>
+                <div class="instagram-item" onclick="openInstagram(2)" role="button" tabindex="0" aria-label="View Instagram post 2"></div>
+                <div class="instagram-item" onclick="openInstagram(3)" role="button" tabindex="0" aria-label="View Instagram post 3"></div>
+                <div class="instagram-item" onclick="openInstagram(4)" role="button" tabindex="0" aria-label="View Instagram post 4"></div>
+                <div class="instagram-item" onclick="openInstagram(5)" role="button" tabindex="0" aria-label="View Instagram post 5"></div>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-<!-- Footer -->
-<footer class="footer">
-  <div class="social-icons">
-    <a href="https://www.instagram.com/skymography/" target="_blank" class="social-icon" aria-label="Instagram">
-      <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" />
-    </a>
-    <a href="https://www.youtube.com/Skymography" target="_blank" class="social-icon" aria-label="YouTube">
-      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" />
-    </a>
-    <a href="https://twitter.com/skymography" target="_blank" class="social-icon" aria-label="Twitter">
-      <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" />
-    </a>
-    <a href="https://www.linkedin.com/in/skymography" target="_blank" class="social-icon" aria-label="LinkedIn">
-      <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" />
-    </a>
-  </div>
-</footer>
-
-
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="https://www.instagram.com/skymography/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Visit Instagram profile">
+                <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" />
+            </a>
+            <a href="https://www.youtube.com/Skymography" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Visit YouTube channel">
+                <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" />
+            </a>
+            <a href="https://twitter.com/skymography" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Visit Twitter profile">
+                <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" />
+            </a>
+            <a href="https://www.linkedin.com/in/skymography" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Visit LinkedIn profile">
+                <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" />
+            </a>
+        </div>
+    </footer>
 
     <script>
         // Portfolio item click handler
@@ -923,7 +843,9 @@
             if (navigator.vibrate) {
                 navigator.vibrate(50);
             }
-            alert(`Opening ${item} portfolio item`);
+            console.log(`Opening ${item} portfolio item`);
+            // Replace alert with actual functionality
+            // window.open(`/portfolio/${item}`, '_blank');
         }
 
         // Instagram item click handler
@@ -931,25 +853,19 @@
             if (navigator.vibrate) {
                 navigator.vibrate(50);
             }
-            window.open('https://www.instagram.com/skymography/', '_blank');
-        }
-
-        // Social media click handlers
-        function openSocial(platform) {
-            if (navigator.vibrate) {
-                navigator.vibrate(50);
-            }
-            
-            const urls = {
-                instagram: 'https://www.instagram.com/skymography/',
-                youtube: 'https://www.youtube.com/Skymography',
-                twitter: 'https://twitter.com/skymography'
-            };
-            window.open(urls[platform], '_blank');
+            window.open('https://www.instagram.com/skymography/', '_blank', 'noopener,noreferrer');
         }
 
         // Loading animation with intersection observer
         function initLoadingAnimations() {
+            if (!('IntersectionObserver' in window)) {
+                // Fallback for older browsers
+                document.querySelectorAll('.loading').forEach(el => {
+                    el.classList.add('loaded');
+                });
+                return;
+            }
+
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -981,6 +897,18 @@
             });
         });
 
+        // Add keyboard support for interactive elements
+        function addKeyboardSupport() {
+            document.querySelectorAll('[role="button"]').forEach(element => {
+                element.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            });
+        }
+
         // Optimize performance for all devices
         function optimizePerformance() {
             // Lazy load images and videos
@@ -1009,6 +937,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             initLoadingAnimations();
             optimizePerformance();
+            addKeyboardSupport();
             
             // Add a small delay to ensure smooth initial load
             setTimeout(() => {
@@ -1046,7 +975,8 @@
                 // Force recalculation of scaled elements
                 const scaledElements = document.querySelectorAll('.header, .container, .footer');
                 scaledElements.forEach(el => {
-                    el.style.transform = el.style.transform;
+                    const transform = el.style.transform;
+                    el.style.transform = transform;
                 });
             }, 100);
         });
@@ -1057,7 +987,7 @@
             if (e.target.closest('.portfolio-item, .instagram-item, .social-icon')) {
                 e.target.style.transition = 'transform 0.1s ease';
             }
-        });
+        }, { passive: true });
 
         // Prevent context menu on long press for portfolio items
         document.addEventListener('contextmenu', function(e) {
@@ -1077,6 +1007,14 @@
 
         // Call optimization on load
         window.addEventListener('load', optimizeForScreenDensity);
+
+        // Error handling for external resources
+        window.addEventListener('error', function(e) {
+            if (e.target.tagName === 'IMG') {
+                console.warn('Image failed to load:', e.target.src);
+                // Could add fallback image here
+            }
+        }, true);
     </script>
 </body>
 </html>
