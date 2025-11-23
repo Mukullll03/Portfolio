@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
 
-    <title>About - Mukul Visuals</title>
+    <title>About Mukul</title>
     
     <!-- Font Imports -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -539,7 +539,7 @@
         <div class="header-content">
             <a href="index.html" class="logo">
                 <img src="https://i.postimg.cc/Ss52dZKf/Avatar.png" alt="Avatar Logo" class="logo-img">
-                mukull.edits
+                mukul visuals
             </a>
 
             <nav class="nav">
@@ -594,6 +594,9 @@
             <a href="https://www.linkedin.com/in/skymography" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Visit LinkedIn profile">
                 <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" />
             </a>
+        </div>
+        <div class="copyright">
+            © 2025 Mukul Visuals. All rights reserved.
         </div>
     </footer>
 
@@ -776,20 +779,23 @@
             return `ABOUT MUKUL:\n${about}`;
         }
 
-        // ROBUST POLLINATIONS API CALL WITH RETRY
-        async function callPollinationsAPI(systemPrompt, userPrompt) {
-            const url = 'https://text.pollinations.ai/';
+        async function callGeminiAPI(systemPrompt, userPrompt) {
+            const apiKey = ""; // System provides key
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+
             const payload = {
-                messages: [
-                    { role: 'system', content: systemPrompt },
-                    { role: 'user', content: userPrompt }
-                ],
-                model: 'openai',
-                seed: Math.floor(Math.random() * 1000)
+                contents: [{
+                    parts: [{ text: userPrompt }]
+                }],
+                systemInstruction: {
+                    parts: [{ text: systemPrompt }]
+                }
             };
 
-            // Retry loop to handle network blips
-            for (let i = 0; i < 3; i++) {
+            const maxRetries = 5;
+            let retryDelay = 1000;
+
+            for (let attempt = 0; attempt <= maxRetries; attempt++) {
                 try {
                     const response = await fetch(url, {
                         method: 'POST',
@@ -797,18 +803,29 @@
                         body: JSON.stringify(payload)
                     });
 
-                    if (response.ok) {
-                        const text = await response.text();
-                        return text.replace(/\*\*Support Pollinations\.AI:\*\*[\s\S]*/, '').trim();
+                    if (!response.ok) {
+                         if (attempt < maxRetries) {
+                            // Exponential backoff
+                            await new Promise(resolve => setTimeout(resolve, retryDelay));
+                            retryDelay *= 2;
+                            continue;
+                        }
+                        throw new Error(`HTTP error! status: ${response.status}`);
                     }
-                } catch (e) {
-                    console.warn(`Attempt ${i+1} failed:`, e);
-                    if (i === 2) return "I'm having trouble connecting right now. Please check your internet.";
-                    // Simple backoff: wait 1s, then 2s
-                    await new Promise(r => setTimeout(r, 1000 * (i + 1)));
+
+                    const data = await response.json();
+                    return data.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, I couldn't generate a response.";
+
+                } catch (error) {
+                    if (attempt === maxRetries) {
+                        console.error("Gemini API Error:", error);
+                        return "Sorry, I'm having trouble connecting right now. Please try again later.";
+                    }
+                    // Wait before retrying on network error
+                    await new Promise(resolve => setTimeout(resolve, retryDelay));
+                    retryDelay *= 2;
                 }
             }
-            return "Connection failed after retries.";
         }
 
         function toggleChat() {
@@ -855,7 +872,8 @@
             Answer the user's question based strictly on this context. 
             Keep answers brief and professional.`;
 
-            const answer = await callPollinationsAPI(systemPrompt, question);
+            // Call the new free API
+            const answer = await callGeminiAPI(systemPrompt, question);
             
             indicator.style.display = 'none';
             body.innerHTML += `<div class="msg bot">${answer}</div>`;
